@@ -20,17 +20,17 @@ void initializePlayers(Player *p1, Player *p2)
 	printf("Please enter player 1's name (representing black disk): ");
 	fgets(p1->name, STR_SIZE, stdin);
 	p1->type = BLACK;
+	p1->disks = 2;
 	
 	// Name for player 2.
 	printf("Please enter player 2's name (representing white disk): ");
 	fgets(p2->name, STR_SIZE, stdin);
 	p2->type = WHITE;
+	p2->disks = 2;
 	
 	// Removes newline characters for player names due to fgets.
 	removeNewline(p1->name);
 	removeNewline(p2->name);
-	
-	puts("");
 }
 
 

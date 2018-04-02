@@ -8,7 +8,7 @@ typedef struct Player
 {
 	char name[STR_SIZE]; // Holds the name of the player.
 	enum colour type;
-	int diskNum; // Current number of disk the player has on the board.
+	int disks; // Current number of disk the player has on the board.
 } Player;
 
 typedef struct Position
