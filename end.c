@@ -1,7 +1,15 @@
 #include <stdio.h>
+
 #include "initialize.h"
 #include "end.h"
 
+// Le Function Definitions.
+
+/* Function that determines win/draw/lose conditions and updates player info accordingly; it takes in,
+ * - Disk board[][]: 2D array representing row and col of board
+ * - Player p1: Player 1's struct.
+ * - Player p2: Player 2's struct.
+ */
 void manageEnding(Disk board[][BOARD_SIZE], Player p1, Player p2)
 {
 	// print points.
@@ -19,11 +27,20 @@ void manageEnding(Disk board[][BOARD_SIZE], Player p1, Player p2)
 }
 
 
+
+// A.3 Printing the final result.
+
+/* Function outputs end game result to a txt file and takes in,
+ * - Disk board[][]: 2D array representing row and col of board
+ * - Player p1: Player 1's struct.
+ * - Player p2: Player 2's struct.
+ * NOTE: This function is only called once at the end of the game.
+ */
 void saveToFile(Disk board[][BOARD_SIZE], Player p1, Player p2)
 {
 	FILE *fp;
 	
-	if ((fp = fopen("game.txt", "w")) == NULL)
+	if ((fp = fopen("game_results.txt", "w")) == NULL)
 		printf("\n[Error] Cannot open game.txt.\n");
 	else
 	{
@@ -44,7 +61,13 @@ void saveToFile(Disk board[][BOARD_SIZE], Player p1, Player p2)
 }
 
 
-// A modified printBoard function from printBoard in initialize.c that is used to print data to files.
+
+/* Function is a modified version of the printBoard function that is used to
+ * print data to files. and takes in,
+ * - Disk board[][]: 2D array representing row and col of board
+ * - *fp: Pointer to the txt file.
+ * NOTE: This function is used in each turn, including the final turn.
+ */
 void printBoardToFile(Disk board[][BOARD_SIZE], FILE *fp)
 {
 	// column header at the top.

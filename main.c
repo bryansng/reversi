@@ -11,8 +11,9 @@
 #include "turns.h"
 #include "end.h"
 
-int main(void)
+int main (void)
 {
+	// A.1 Start Condition.
 	// initialize players.
 	Player p1 = {"player 1", NONE, 0};
 	Player p2 = {"player 2", NONE, 0};
@@ -24,36 +25,13 @@ int main(void)
 	initializeBoard(board);
 	
 	printBoard(board);
-
+	
+	// A.2 Manage turn.
     // invoke a method that implements the game logic.
     manageTurns(board, &p1, &p2);
 
+	// A.3 Printing the final result.
     // invoke a method that prints the final result.
 	// when game ends i.e. no board space left.
 	manageEnding(board, p1, p2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

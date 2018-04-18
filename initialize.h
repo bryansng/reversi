@@ -1,42 +1,43 @@
-#define STR_SIZE 20  // maximum length for player names.
+#define STR_SIZE 20  // Maximum length for player names.
 #define BOARD_SIZE 8 // board is 8*8.
 
-enum colour {BLACK, WHITE, NONE};
+// A.1 Start Condition.
 
-// create a new type struct to represent player, i.e. a type of class, for Players.
+enum colour {BLACK, WHITE, NONE}; // Disk colours.
+
+// Player info.
 typedef struct Player
 {
-	char name[STR_SIZE]; // holds the name of the player.
-	enum colour type;
-	int disks; // current number of disk the player has on the board.
+	char name[STR_SIZE];    // player name.
+	enum colour type;       // player's disk colour.
+	int disks;              // player's current number of disks on board.
 } Player;
 
+// Disk position (mainly used in struct Disk).
 typedef struct Position
 {
 	int row;
 	int col;
 } Position;
 
-// create a new type struct to represent disks, i.e. a type of class, for Players.
+// Disk info.
 typedef struct Disk
 {
-	enum colour type;
-	Position pos;
+	enum colour type; // disk colour.
+	Position pos;     // disk position.
 } Disk;
 
-void initializePlayers(Player *p1, Player *p2);
-
-void initializeBoard(Disk board[][BOARD_SIZE]);
-
-void printBoard(Disk board[][BOARD_SIZE]);
-
+// Linked List that is used to store the number of moves per turn.
 struct ListNode
 {
 	int row;
 	int col;
-	struct ListNode *nextPtr;
+	struct ListNode *nextPtr; // points to next node.
 };
 
-typedef struct ListNode listNode;
-typedef listNode *listNodePtr;
+typedef struct ListNode listNode; // listNode is a synonym for struct ListNode.
+typedef listNode *listNodePtr; // listNodePtr is a synonym for pointer to a listNode.
 
+void initializePlayers(Player *p1, Player *p2);
+void initializeBoard(Disk board[][BOARD_SIZE]);
+void printBoard(Disk board[][BOARD_SIZE]);

@@ -1,32 +1,31 @@
-#include <stdio.h>
-#include <stdlib.h>	// for fgets.
-#include <string.h>	// for removing newline characters with strlen.
+#include <stdio.h> // For printf.
+#include <stdlib.h>	// For fgets.
+#include <string.h>	// For removing newline characters with strlen.
 
 #include "initialize.h"
 
-// Le Function Prototypes.
+// Le Function Definitions.
 void removeNewline(char a[]);
 
-
-// Le Function Definitions.
+// A.1 Start conditions.
 
 /* Function asks user for input and inputs players' name into the struct variable and takes in,
-* - *p1: Pointer to the struct player 1, to modify name in-place.
-* - *p2: Pointer to the struct player 2, to modify name in-place.
-*/
+ * - *p1: Pointer to the struct player 1, to modify name in-place.
+ * - *p2: Pointer to the struct player 2, to modify name in-place.
+ */
 void initializePlayers(Player *p1, Player *p2)
 {
-	// name for player 1.
+	// player 1.
 	printf("Please enter player 1's name (representing black disk): ");
-	fgets(p1->name, STR_SIZE, stdin);
-	p1->type = BLACK;
-	p1->disks = 2;
+	fgets(p1->name, STR_SIZE, stdin); // prompts for name.
+	p1->type = BLACK; // player 1 plays with black disks.
+	p1->disks = 2; // each player starts with 2 disks on board.
 	
-	// name for player 2.
+	// player 2.
 	printf("Please enter player 2's name (representing white disk): ");
-	fgets(p2->name, STR_SIZE, stdin);
-	p2->type = WHITE;
-	p2->disks = 2;
+	fgets(p2->name, STR_SIZE, stdin); // prompts for name.
+	p2->type = WHITE; // player 2 plays with black disks.
+	p2->disks = 2; // each player starts with 2 disks on board.
 	
 	// removes newline characters for player names due to fgets.
 	removeNewline(p1->name);
@@ -35,8 +34,8 @@ void initializePlayers(Player *p1, Player *p2)
 
 
 /* Function removes newline at the end of a string in a 1D character array and takes in,
-* - a[]: a 1D character array.
-*/
+ * - a[]: a 1D character array.
+ */
 void removeNewline(char a[])
 {
 	int len = strlen(a)-1;	// gets the string length-1.
@@ -47,6 +46,9 @@ void removeNewline(char a[])
 }
 
 
+/* Function initializes disks positions on board to start conditions and takes in,
+ * - Disk board[][]: 2D array representing row and col of board.
+ */
 void initializeBoard(Disk board[][BOARD_SIZE])
 {
 	for (unsigned int r = 0; r < BOARD_SIZE; r++)
@@ -58,10 +60,10 @@ void initializeBoard(Disk board[][BOARD_SIZE])
 					switch (c)
 					{
 						case 3:
-							board[r][c].type = BLACK;
+							board[r][c].type = WHITE;
 							break;
 						case 4:
-							board[r][c].type = WHITE;
+							board[r][c].type = BLACK;
 							break;
 						default: // rest of the columns in row 3.
 							board[r][c].type = NONE;
@@ -71,10 +73,10 @@ void initializeBoard(Disk board[][BOARD_SIZE])
 					switch (c)
 					{
 						case 3:
-							board[r][c].type = WHITE;
+							board[r][c].type = BLACK;
 							break;
 						case 4:
-							board[r][c].type = BLACK;
+							board[r][c].type = WHITE;
 							break;
 						default: // rest of the columns in row 4.
 							board[r][c].type = NONE;
@@ -89,10 +91,10 @@ void initializeBoard(Disk board[][BOARD_SIZE])
 }
 
 
-/* Function prints the board that represents the game and takes in,
-* - d_p1: Struct of player 1.
-* - d_p2: Struct of player 2.
-*/
+/* Function outputs the board that represents the current turn and takes in,
+ * - Disk board[][]: 2D array representing row and col of board
+ * Note: This function is used in each turn, including the final turn.
+ */
 void printBoard(Disk board[][BOARD_SIZE])
 {
 	// gives a cleaner and spacious look in the console.
@@ -106,7 +108,7 @@ void printBoard(Disk board[][BOARD_SIZE])
 	// rows header + data.
 	for (int r = 0; r < BOARD_SIZE; r++)
 	{
-		// row header on the left.
+		// left row header.
 		printf("\n%d |", r+1);
 		
 		// row data.
@@ -120,40 +122,12 @@ void printBoard(Disk board[][BOARD_SIZE])
 				printf("   |");
 		}
 		
-		// row header on the right.
+		// right row header.
 		printf(" %d", r+1);
 	}
 	
-	// column header at the bottom.
+	// column footer.
 	printf("\n    "); // 4 spaces.
 	for (int c = 1; c <= BOARD_SIZE; c++)
 		printf("%c   ", c-1+'a');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
