@@ -49,7 +49,9 @@ void manageTurns(Disk board[][BOARD_SIZE], Player *p1, Player *p2)
 }
 
 
-/* Function that manages each move by calculating possible moves then prompting user to chose one; it takes in,
+/* Function that manages each move by calculating the number of possible moves, 
+ * prints them, promts the user to choose one, then update the board relative 
+ * to the choice made by the user; it takes in,
  * - Disk board[][]: 2D array representing row and col of board
  * - Player *pCurrent: current player
  * - Player *pOpponent: opponent player
@@ -61,16 +63,22 @@ void manageMoves(Disk board[][BOARD_SIZE], Player *pCurrent, Player *pOpponent)
 	
 	getCoords(board, pCurrent, pOpponent, &startPtr);
 	
-	int max;
+	int max = 0; // stores the maximum number of possible moves.
 	printCoords(startPtr, &max);
 	
-	int choice = 0;
-	askChooseCoord(*pCurrent, max, &choice);
-	
-	int row = 0, col = 0;
-	getChosenCoord(&startPtr, choice, &row, &col);
-	
-	placeDisks(board, pCurrent, pOpponent, row, col);
+	// if maximum number of possible moves is not zero.
+	if (max != 0)
+	{
+		int choice = 0;
+		askChooseCoord(*pCurrent, max, &choice);
+		
+		int row = 0, col = 0;
+		getChosenCoord(&startPtr, choice, &row, &col);
+		
+		placeDisks(board, pCurrent, pOpponent, row, col);
+	}
+	else // else, we skip current player's turn.
+		printf("\n[NOTE] Player %s has no moves to make, skipped turn to Player %s.\n", pCurrent->name, pOpponent->name);
 }
 
 

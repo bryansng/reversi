@@ -5,7 +5,7 @@
 
 // Le Function Definitions.
 
-/* Function that determines win/draw/lose conditions and updates player info accordingly; it takes in,
+/* Function determines win/draw/lose conditions and prints out end game results; it takes in,
  * - Disk board[][]: 2D array representing row and col of board
  * - Player p1: Player 1's struct.
  * - Player p2: Player 2's struct.

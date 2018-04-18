@@ -25,8 +25,8 @@ void updateAtSouthEast(Disk board[][BOARD_SIZE], Player *pCurrent, Player *pOppo
  */
 void updateDisksAndScore(Disk board[][BOARD_SIZE], Player *pCurrent, Player *pOpponent, int row, int col)
 {
-	// from previous function, row, col. (start location of own disk)
-	// outer loop, i, j. (for perimeter of starting own disk)
+	// from previous function, row, col. (start location of current player's disk)
+	// outer loop, i, j. (for perimeter of that disk)
 	
 	// check for adversary disks in the perimeter.
 	for (int i = row-1; i <= row+1; i++)
@@ -62,7 +62,7 @@ void updateDisksAndScore(Disk board[][BOARD_SIZE], Player *pCurrent, Player *pOp
 			}
 }
 
-/* Function below aid updateDisksAndScore to look at certain cardinal directions;
+/* Functions below aid updateDisksAndScore to look at their respective cardinal directions;
  * They each take in,
  * - Disk board[][]: 2D array representing row and col of board
  * - Player *pCurrent: Pointer to current player's struct.
@@ -75,7 +75,7 @@ void updateAtNorthWest(Disk board[][BOARD_SIZE], Player *pCurrent, Player *pOppo
 {
 	// outer loop, r, c. (for direction heading towards a direction)
 	// inner loop, x, y. (for direction heading back towards start location of own disk)
-	 for (int r = row-2, c = col-2; r >= 0 && c >= 0; )
+	for (int r = row-2, c = col-2; r >= 0 && c >= 0; )
 	{
 		if (board[r][c].type == pOpponent->type)
 		{

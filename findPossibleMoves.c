@@ -88,7 +88,7 @@ void findPossibleMoves(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOppo
 
 
 
-/* Functions inserts the data i.e., row and column, into the linked list; It takes in,
+/* Function inserts the data i.e., row and column, into the linked list; It takes in,
  * - listNodePtr *sPtr: Pointer that points to the start of the linked list, used to store the number of possible moves per turn.
  * - int r: Row / x-coordinate to insert.
  * - int c: Col / y-coordinate to insert.
@@ -134,7 +134,7 @@ void insert(listNodePtr *sPtr, int r, int c)
 	}
 }
 
-/* Functions loops through the linked list to check if the coordinates already
+/* Function loops through the linked list to check if the coordinates already
  * exists within the linked list; It takes in,
  * - listNodePtr currentPtr: Pointer that points to the start of the linked list, used to store the number of possible moves per turn.
  * - int r: Row / x-coordinate to check.
@@ -158,7 +158,7 @@ int isInList(listNodePtr currentPtr, int r, int c)
 
 
 
-/* Functions below aid findPossibleMoves to look in certain cardinal directions; They each take in,
+/* Functions below aid findPossibleMoves to look for possible moves in their respective cardinal directions; They each take in,
  * - Disk board[][]: 2D array representing row and col of board
  * - listNodePtr *sPtr: Pointer that points to the start of the linked list, used to store the number of possible moves per turn.
  * - Player pOpponent: Player struct of current opponent.
@@ -167,7 +167,7 @@ int isInList(listNodePtr currentPtr, int r, int c)
  * NOTE: For each direction, the possible move is only registered if there are no disks there. If there is an opponent disk or player disk, it is ignored.
 */
 
-void findMovesAtNorthWest (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtNorthWest(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row-2, c = col-2; r >= 0 && c >= 0; )
 	{
@@ -186,7 +186,7 @@ void findMovesAtNorthWest (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player p
 	}
 }
 
-void findMovesAtNorth (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtNorth(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row-2, c = col; r >= 0; )
 	{
@@ -202,7 +202,7 @@ void findMovesAtNorth (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOppo
 	}
 }
 
-void findMovesAtNorthEast (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtNorthEast(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row-2, c = col+2; r >= 0 && c < BOARD_SIZE; )
 	{
@@ -221,7 +221,7 @@ void findMovesAtNorthEast (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player p
 	}
 }
 
-void findMovesAtWest (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtWest(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int c = col-2, r = row; c >= 0; )
 	{
@@ -237,7 +237,7 @@ void findMovesAtWest (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOppon
 	}
 }
 
-void findMovesAtEast (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtEast(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int c = col+2, r = row; c < BOARD_SIZE; )
 	{
@@ -253,7 +253,7 @@ void findMovesAtEast (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOppon
 	}
 }
 
-void findMovesAtSouthWest (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtSouthWest(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row+2, c =col-2; r < BOARD_SIZE&& c >= 0; )
 	{
@@ -272,7 +272,7 @@ void findMovesAtSouthWest (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player p
 	}
 }
 
-void findMovesAtSouth (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtSouth(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row+2, c = col; r < BOARD_SIZE; )
 	{
@@ -288,7 +288,7 @@ void findMovesAtSouth (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOppo
 	}
 }
 
-void findMovesAtSouthEast (Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
+void findMovesAtSouthEast(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row+2, c = col+2; r < BOARD_SIZE && c < BOARD_SIZE; )
 	{
