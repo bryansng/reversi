@@ -139,7 +139,7 @@ void insert(listNodePtr *sPtr, int r, int c)
  * - listNodePtr currentPtr: Pointer that points to the start of the linked list, used to store the number of possible moves per turn.
  * - int r: Row / x-coordinate to check.
  * - int c: Col / y-coordinate to check.
-*/
+ */
 int isInList(listNodePtr currentPtr, int r, int c)
 {
 	while (currentPtr != NULL)
@@ -165,8 +165,7 @@ int isInList(listNodePtr currentPtr, int r, int c)
  * - row: Current player's disk's y-coordinate.
  * - col: Current player's disk's x-coordinate.
  * NOTE: For each direction, the possible move is only registered if there are no disks there. If there is an opponent disk or player disk, it is ignored.
-*/
-
+ */
 void findMovesAtNorthWest(Disk board[][BOARD_SIZE], listNodePtr *sPtr, Player pOpponent, int row, int col)
 {
 	for (int r = row-2, c = col-2; r >= 0 && c >= 0; )

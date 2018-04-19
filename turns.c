@@ -149,7 +149,7 @@ void askChooseCoord(Player pCurrent, int max, int *choice)
  * - *row: Pointer to the current player's disk's y-coordinate
  * - *col: Pointer to the current plaer's disk's x-coordinate
  * NOTE: this function is called once each turn.
-*/
+ */
 void getChosenCoord(listNodePtr *sPtr, int choice, int *row, int *col)
 {
 	int i = 0;
@@ -187,7 +187,7 @@ void getChosenCoord(listNodePtr *sPtr, int choice, int *row, int *col)
 /* Function checks if the linked list is empty, i.e. first node leads to nothing,
  * i.e. first node is NULL; it takes in,
  * - listNodePtr sPtr: Points to the start of the linked list i.e., first struct, used to store the number of possible moves per turn.
-*/
+ */
 int isEmpty(listNodePtr sPtr)
 {
 	return sPtr == NULL;
@@ -196,7 +196,7 @@ int isEmpty(listNodePtr sPtr)
 /* Function removes the node from the linked list as well as free the memory
  * allocated to it; it takes in,
  * - listNodePtr *sPtr: Pointer that points to the start of the linked list, used to store the number of possible moves per turn.
-*/
+ */
 void dequeue(listNodePtr *sPtr)
 {
 	listNodePtr tempPtr = *sPtr;

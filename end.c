@@ -41,7 +41,7 @@ void saveToFile(Disk board[][BOARD_SIZE], Player p1, Player p2)
 	FILE *fp;
 	
 	if ((fp = fopen("game_results.txt", "w")) == NULL)
-		printf("\n[Error] Cannot open game.txt.\n");
+		printf("\n[Error] Cannot open game_results.txt.\n");
 	else
 	{
 		printBoardToFile(board, fp);
